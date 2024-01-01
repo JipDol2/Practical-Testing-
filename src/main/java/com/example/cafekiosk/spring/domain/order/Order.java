@@ -4,8 +4,10 @@ import com.example.cafekiosk.spring.domain.BaseEntity;
 import com.example.cafekiosk.spring.domain.orderproduct.OrderProduct;
 import com.example.cafekiosk.spring.domain.product.Product;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.aspectj.weaver.ast.Or;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -34,8 +36,9 @@ public class Order extends BaseEntity {
     @OneToMany(mappedBy = "order",cascade = CascadeType.ALL)
     private List<OrderProduct> orderProducts = new ArrayList<>();
 
-    public Order(List<Product> products,LocalDateTime registeredDateTime) {
-        this.orderStatus = INIT;
+    @Builder
+    private Order(List<Product> products, OrderStatus orderStatus, LocalDateTime registeredDateTime) {
+        this.orderStatus = orderStatus;
         this.totalPrice = calculateTotalPrice(products);
         this.registeredDateTime = registeredDateTime;
         this.orderProducts = products.stream()
@@ -44,7 +47,11 @@ public class Order extends BaseEntity {
     }
 
     public static Order create(List<Product> products, LocalDateTime registerDateTime) {
-        return new Order(products, registerDateTime);
+        return Order.builder()
+                .orderStatus(INIT)
+                .products(products)
+                .registeredDateTime(registerDateTime)
+                .build();
     }
 
     private static int calculateTotalPrice(List<Product> products) {
