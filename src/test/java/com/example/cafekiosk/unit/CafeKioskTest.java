@@ -122,16 +122,6 @@ class CafeKioskTest {
     }
 
     @Test
-    @DisplayName("")
-    void test(){
-        //given
-
-        //when
-
-        //then
-    }
-
-    @Test
     void createOrderOutsizeOpenTime() {
         CafeKiosk cafeKiosk = new CafeKiosk();
         Americano americano = new Americano();
