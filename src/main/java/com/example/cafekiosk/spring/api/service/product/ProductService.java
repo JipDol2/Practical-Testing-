@@ -31,6 +31,7 @@ public class ProductService {
         return ProductResponse.of(savedProduct);
     }
 
+    //private method 는 굳이  test 하려고 하지 마라
     private String createNextProductNumber(){
         String latestProductNumber = productRepository.findLatestProductNumber();
         if(latestProductNumber==null){
