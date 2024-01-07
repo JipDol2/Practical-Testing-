@@ -1,5 +1,6 @@
 package com.example.cafekiosk.spring.api.controller.product;
 
+import com.example.cafekiosk.spring.ControllerTestSupport;
 import com.example.cafekiosk.spring.api.controller.product.dto.request.ProductCreateRequest;
 import com.example.cafekiosk.spring.api.service.product.ProductService;
 import com.example.cafekiosk.spring.api.service.product.response.ProductResponse;
@@ -24,17 +25,17 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(controllers = ProductController.class)
-class ProductControllerTest {
+//@WebMvcTest(controllers = ProductController.class)
+class ProductControllerTest extends ControllerTestSupport {
 
-    @Autowired
-    private MockMvc mockMvc;
-
-    @Autowired
-    private ObjectMapper objectMapper;
-
-    @MockBean
-    private ProductService productService;
+//    @Autowired
+//    private MockMvc mockMvc;
+//
+//    @Autowired
+//    private ObjectMapper objectMapper;
+//
+//    @MockBean
+//    private ProductService productService;
 
     @Test
     @DisplayName("신규 상품을 등록한다.")

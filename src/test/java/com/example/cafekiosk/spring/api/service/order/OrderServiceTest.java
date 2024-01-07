@@ -1,5 +1,6 @@
 package com.example.cafekiosk.spring.api.service.order;
 
+import com.example.cafekiosk.spring.IntegrationTestSupport;
 import com.example.cafekiosk.spring.api.controller.order.request.OrderCreateRequest;
 import com.example.cafekiosk.spring.api.service.order.response.OrderResponse;
 import com.example.cafekiosk.spring.domain.order.OrderRepository;
@@ -10,6 +11,7 @@ import com.example.cafekiosk.spring.domain.product.ProductType;
 import com.example.cafekiosk.spring.domain.stock.Stock;
 import com.example.cafekiosk.spring.domain.stock.StockRepository;
 import org.assertj.core.groups.Tuple;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -24,11 +26,7 @@ import static com.example.cafekiosk.spring.domain.product.ProductSellingStatus.*
 import static com.example.cafekiosk.spring.domain.product.ProductType.*;
 import static org.assertj.core.api.Assertions.*;
 
-@ActiveProfiles("test")
-//@Transactional
-@SpringBootTest
-//@DataJpaTest
-class OrderServiceTest {
+class OrderServiceTest extends IntegrationTestSupport {
 
     @Autowired
     private ProductRepository productRepository;
@@ -41,7 +39,7 @@ class OrderServiceTest {
     @Autowired
     private StockRepository stockRepository;
 
-    @BeforeEach
+    @AfterEach
     void tearDown(){
         orderProductRepository.deleteAllInBatch();
         productRepository.deleteAllInBatch();

@@ -1,5 +1,6 @@
 package com.example.cafekiosk.spring.api.controller.order;
 
+import com.example.cafekiosk.spring.ControllerTestSupport;
 import com.example.cafekiosk.spring.api.controller.order.request.OrderCreateRequest;
 import com.example.cafekiosk.spring.api.service.order.OrderService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -19,17 +20,17 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(controllers = OrderController.class)
-class OrderControllerTest {
+//@WebMvcTest(controllers = OrderController.class)
+class OrderControllerTest extends ControllerTestSupport {
 
-    @Autowired
-    private ObjectMapper objectMapper;
-
-    @Autowired
-    private MockMvc mockMvc;
-
-    @MockBean
-    private OrderService orderService;
+//    @Autowired
+//    private ObjectMapper objectMapper;
+//
+//    @Autowired
+//    private MockMvc mockMvc;
+//
+//    @MockBean
+//    private OrderService orderService;
 
     @Test
     @DisplayName("신규 주문을 등록한다.")

@@ -1,5 +1,6 @@
-package com.example.cafekiosk.spring.domain;
+package com.example.cafekiosk.spring.domain.product;
 
+import com.example.cafekiosk.spring.IntegrationTestSupport;
 import com.example.cafekiosk.spring.domain.product.Product;
 import com.example.cafekiosk.spring.domain.product.ProductRepository;
 import com.example.cafekiosk.spring.domain.product.ProductSellingStatus;
@@ -10,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -17,10 +19,8 @@ import static com.example.cafekiosk.spring.domain.product.ProductSellingStatus.*
 import static com.example.cafekiosk.spring.domain.product.ProductType.*;
 import static org.assertj.core.api.Assertions.*;
 
-//@SpringBootTest
-@ActiveProfiles("test")
-@DataJpaTest
-class ProductRepositoryTest {
+@Transactional
+class ProductRepositoryTest extends IntegrationTestSupport {
 
     @Autowired
     private ProductRepository productRepository;
